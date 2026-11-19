@@ -1,0 +1,53 @@
+# baseline: n=p=700, alpha=-6, 300 iterations, wall 5.87s
+         167986 function calls (167066 primitive calls) in 5.869 seconds
+
+   Ordered by: internal time
+   List reduced from 410 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      300    2.069    0.007    2.069    0.007 {method 'run_backward' of 'torch._C._EngineBase' objects}
+      308    1.001    0.003    1.034    0.003 methods.py:80(Q)
+      300    0.499    0.002    0.877    0.003 methods.py:99(neg_elbo)
+      600    0.304    0.001    0.304    0.001 {built-in method torch.binary_cross_entropy_with_logits}
+      178    0.251    0.001    0.251    0.001 {built-in method torch._C._nn.log_sigmoid}
+      300    0.242    0.001    0.319    0.001 methods.py:72(PX)
+      600    0.169    0.000    0.169    0.000 {built-in method torch.sigmoid}
+      300    0.153    0.001    0.261    0.001 methods.py:76(PA)
+       98    0.131    0.001    0.131    0.001 {built-in method torch.logaddexp}
+      300    0.082    0.000    0.277    0.001 adam.py:347(_single_tensor_adam)
+        1    0.078    0.078    0.403    0.403 methods.py:166(mc_log_probs)
+        7    0.069    0.010    0.693    0.099 metrics.py:67(evaluate)
+        1    0.050    0.050    5.847    5.847 methods.py:107(fit_vae)
+       64    0.042    0.001    0.054    0.001 metrics.py:20(bern_kl)
+     3300    0.041    0.000    0.041    0.000 {method 'lerp_' of 'torch._C.TensorBase' objects}
+       32    0.040    0.001    0.158    0.005 metrics.py:26(prob_metrics)
+     1984    0.039    0.000    0.039    0.000 {method 'pow' of 'torch._C.TensorBase' objects}
+     3300    0.036    0.000    0.036    0.000 {method 'addcdiv_' of 'torch._C.TensorBase' objects}
+     1940    0.035    0.000    0.035    0.000 {method 'sum' of 'torch._C.TensorBase' objects}
+     3300    0.031    0.000    0.031    0.000 {method 'mul_' of 'torch._C.TensorBase' objects}
+
+
+         167986 function calls (167066 primitive calls) in 5.869 seconds
+
+   Ordered by: cumulative time
+   List reduced from 410 to 29 due to restriction <'methods.py|metrics.py|simulation.py|dgps.py'>
+   List reduced from 29 to 15 due to restriction <15>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.002    0.002    5.869    5.869 simulation.py:60(run_one_rep)
+        1    0.050    0.050    5.847    5.847 methods.py:107(fit_vae)
+      308    1.001    0.003    1.034    0.003 methods.py:80(Q)
+      300    0.499    0.002    0.877    0.003 methods.py:99(neg_elbo)
+        7    0.012    0.002    0.706    0.101 simulation.py:79(on_log)
+        7    0.069    0.010    0.693    0.099 metrics.py:67(evaluate)
+        1    0.078    0.078    0.403    0.403 methods.py:166(mc_log_probs)
+      300    0.242    0.001    0.319    0.001 methods.py:72(PX)
+      300    0.153    0.001    0.261    0.001 methods.py:76(PA)
+       32    0.040    0.001    0.158    0.005 metrics.py:26(prob_metrics)
+       64    0.042    0.001    0.054    0.001 metrics.py:20(bern_kl)
+        7    0.010    0.001    0.053    0.008 methods.py:161(plugin_log_probs)
+      300    0.011    0.000    0.045    0.000 methods.py:94(l2_reg)
+      300    0.017    0.000    0.037    0.000 methods.py:91(sample_z)
+        1    0.012    0.012    0.013    0.013 methods.py:23(preprocess)
+
+

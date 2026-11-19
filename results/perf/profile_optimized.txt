@@ -1,0 +1,53 @@
+# optimized: n=p=700, alpha=-6, 300 iterations, wall 3.72s
+         164973 function calls (164057 primitive calls) in 3.723 seconds
+
+   Ordered by: internal time
+   List reduced from 353 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      300    1.464    0.005    1.464    0.005 {method 'run_backward' of 'torch._C._EngineBase' objects}
+        1    0.435    0.435    3.691    3.691 methods.py:130(fit_vae)
+      308    0.389    0.001    0.426    0.001 methods.py:96(Q_pre)
+      600    0.316    0.001    0.316    0.001 {built-in method torch.binary_cross_entropy_with_logits}
+      122    0.166    0.001    0.166    0.001 {built-in method torch._C._nn.log_sigmoid}
+       98    0.090    0.001    0.090    0.001 {built-in method torch.logaddexp}
+      300    0.085    0.000    0.272    0.001 adam.py:347(_single_tensor_adam)
+        1    0.057    0.057    0.284    0.284 methods.py:205(mc_log_probs)
+        7    0.049    0.007    0.452    0.065 metrics.py:103(evaluate_fast)
+     3300    0.037    0.000    0.037    0.000 {method 'lerp_' of 'torch._C.TensorBase' objects}
+     1876    0.037    0.000    0.037    0.000 {method 'pow' of 'torch._C.TensorBase' objects}
+     3300    0.034    0.000    0.034    0.000 {method 'addcdiv_' of 'torch._C.TensorBase' objects}
+     3300    0.031    0.000    0.031    0.000 {method 'mul_' of 'torch._C.TensorBase' objects}
+       36    0.028    0.001    0.034    0.001 metrics.py:20(bern_kl)
+     3300    0.024    0.000    0.024    0.000 {method 'sqrt' of 'torch._C.TensorBase' objects}
+      673    0.023    0.000    0.023    0.000 {built-in method torch.exp}
+     1656    0.023    0.000    0.023    0.000 {method 'sum' of 'torch._C.TensorBase' objects}
+     3300    0.022    0.000    0.022    0.000 {method 'add_' of 'torch._C.TensorBase' objects}
+      916    0.020    0.000    0.020    0.000 {built-in method torch.relu}
+     3300    0.020    0.000    0.020    0.000 {method 'addcmul_' of 'torch._C.TensorBase' objects}
+
+
+         164973 function calls (164057 primitive calls) in 3.723 seconds
+
+   Ordered by: cumulative time
+   List reduced from 353 to 27 due to restriction <'methods.py|metrics.py|simulation.py|dgps.py'>
+   List reduced from 27 to 15 due to restriction <15>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    3.723    3.723 simulation.py:60(run_one_rep)
+        1    0.435    0.435    3.691    3.691 methods.py:130(fit_vae)
+        7    0.008    0.001    0.461    0.066 simulation.py:81(on_log)
+        7    0.049    0.007    0.452    0.065 metrics.py:103(evaluate_fast)
+      308    0.389    0.001    0.426    0.001 methods.py:96(Q_pre)
+        1    0.057    0.057    0.284    0.284 methods.py:205(mc_log_probs)
+       32    0.019    0.001    0.070    0.002 metrics.py:85(_metrics_pre)
+      300    0.011    0.000    0.047    0.000 methods.py:117(l2_reg)
+        7    0.012    0.002    0.046    0.007 methods.py:197(plugin_log_probs)
+      300    0.016    0.000    0.036    0.000 methods.py:114(sample_z)
+       36    0.028    0.001    0.034    0.001 metrics.py:20(bern_kl)
+        1    0.008    0.008    0.014    0.014 dgps.py:32(generate_data)
+        1    0.004    0.004    0.012    0.012 metrics.py:56(prepare_truth)
+        1    0.005    0.005    0.006    0.006 methods.py:23(preprocess)
+        2    0.003    0.002    0.003    0.002 dgps.py:14(sigmoid)
+
+

@@ -1,0 +1,4 @@
+config,jobs,threads,wall_s,n_reps,speedup_vs_1worker
+sequential (2 torch threads),1,2,25.772988534999968,8,1.216979261345888
+1 worker(s) x 1 thread,1,1,31.3651925500003,8,1.0
+2 worker(s) x 1 thread,2,1,18.060402614000395,8,1.7366829090336033

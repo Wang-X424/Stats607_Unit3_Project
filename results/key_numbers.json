@@ -1,0 +1,48 @@
+{
+  "n_scenarios": 61,
+  "n_reps_main": 20,
+  "mc_relkl_main_gt1_ci": 53,
+  "mc_relkl_main_lt1_ci": 6,
+  "mc_relkl_main_lt1_scenarios": [
+    "N1100_X700_A0",
+    "N1500_X700_A0",
+    "N700_X100_A0",
+    "N700_X100_Aneg2",
+    "N700_X400_A0",
+    "N700_X700_A0"
+  ],
+  "mc_relfro_all_main_gt1": 43,
+  "mc_relkl_AA_lt1": 53,
+  "max_rel_mcse_main_relkl": 0.0634477558972154,
+  "median_rel_mcse_main_relkl": 0.015149056080728592,
+  "paired_relkl_mc_better_ci": 45,
+  "paired_relkl_pi_better_ci": 14,
+  "paired_relkl_pi_better_scenarios": [
+    "N100_X100_Aneg6",
+    "N1100_X100_Aneg6",
+    "N1100_X400_Aneg6",
+    "N1100_X700_Aneg8",
+    "N1500_X100_Aneg6",
+    "N1500_X400_Aneg6",
+    "N1500_X700_Aneg6",
+    "N1500_X700_Aneg8",
+    "N400_X100_Aneg6",
+    "N700_X100_Aneg6",
+    "N700_X100_Aneg8",
+    "N700_X400_Aneg6",
+    "N700_X400_Aneg8",
+    "N700_X700_Aneg8"
+  ],
+  "paired_relkl_max_abs_diff": 3.1839801752059183,
+  "argmin_iter_main_relkl_counts": {
+    "0": 2,
+    "49": 46,
+    "99": 12,
+    "1199": 1
+  },
+  "median_ratio_final_over_best_main_relkl": 2.214083786261898,
+  "final_logvar_range": [
+    -6.012439107894897,
+    -2.2131474018096924
+  ]
+}

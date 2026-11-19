@@ -1,0 +1,20 @@
+{
+  "study_hours": {
+    "baseline, sequential": 10.888362974599374,
+    "optimised, sequential": 6.271011740126018,
+    "optimised, 2 workers": 4.394406829072034
+  },
+  "measured_full_replicate_n400_p400_s": {
+    "baseline": 8.705199074999655,
+    "optimized": 6.205095546999928
+  },
+  "per_replicate_speedup_range": [
+    1.015125003785735,
+    2.5440977397653675
+  ],
+  "overall_sequential_speedup": 1.736300843598894,
+  "parallel_best_speedup": 1.7366829090336033,
+  "cpu_count": 2,
+  "sequential_2threads_over_1thread_walltime": 0.821706689474786,
+  "note": "projected from component timings on this machine; scenarios with n = p = 1500 dominate"
+}

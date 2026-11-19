@@ -1,0 +1,76 @@
+{
+  "target_rel_mcse": 0.02,
+  "min_reps": 5,
+  "equal_allocation_hours": 6.271011740126015,
+  "adaptive_allocation_hours": 8.707712142802515,
+  "total_reps_equal": 1220,
+  "total_reps_adaptive": 2707,
+  "scenarios_needing_more_than_20": [
+    "N100_X100_Aneg6",
+    "N100_X1100_Aneg6",
+    "N100_X1500_Aneg6",
+    "N100_X400_Aneg6",
+    "N100_X700_A0",
+    "N100_X700_Aneg2",
+    "N100_X700_Aneg4",
+    "N100_X700_Aneg6",
+    "N100_X700_Aneg8",
+    "N1100_X100_Aneg6",
+    "N1100_X1100_Aneg6",
+    "N1100_X1500_Aneg6",
+    "N1100_X700_A0",
+    "N1100_X700_Aneg6",
+    "N1500_X700_A0",
+    "N400_X1100_Aneg6",
+    "N400_X1500_Aneg6",
+    "N400_X700_A0",
+    "N400_X700_Aneg8",
+    "N700_X100_A0",
+    "N700_X100_Aneg2",
+    "N700_X100_Aneg4",
+    "N700_X100_Aneg6",
+    "N700_X1100_Aneg6",
+    "N700_X1100_Aneg8",
+    "N700_X1500_Aneg4",
+    "N700_X1500_Aneg6",
+    "N700_X1500_Aneg8",
+    "N700_X400_A0",
+    "N700_X400_Aneg4",
+    "N700_X400_Aneg6",
+    "N700_X400_Aneg8",
+    "N700_X700_Aneg6",
+    "N700_X700_Aneg8"
+  ],
+  "median_by_n": [
+    {
+      "n": 100,
+      "sd": 1.392,
+      "reps": 156.0,
+      "cost_s": 4.317
+    },
+    {
+      "n": 400,
+      "sd": 0.177,
+      "reps": 18.0,
+      "cost_s": 8.559
+    },
+    {
+      "n": 700,
+      "sd": 0.09,
+      "reps": 23.0,
+      "cost_s": 16.778
+    },
+    {
+      "n": 1100,
+      "sd": 0.115,
+      "reps": 21.0,
+      "cost_s": 33.106
+    },
+    {
+      "n": 1500,
+      "sd": 0.095,
+      "reps": 14.0,
+      "cost_s": 38.997
+    }
+  ]
+}

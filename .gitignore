@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.DS_Store
+logs/
+results/raw/*_quick/
+results/raw/optimized_parallel_quick/
+data/simulated/*
+!data/simulated/.gitkeep
