@@ -97,3 +97,4 @@ seeds torch, and GPU kernels may still be nondeterministic. (b) Every conclusion
 one hyperparameter configuration, and Fig. 2 shows that the stopping time alone changes the answer by a factor of about 2.
 (c) Common random numbers across scenarios make the CIs marginal rather than joint. (d) Each
 replicate is a single training run, so optimisation variance is folded into replicate variance.
+

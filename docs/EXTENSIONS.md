@@ -12,6 +12,7 @@ so I plan with its one-sided 95% upper confidence bound,
 SD_up = SD·√(19/χ²₀.₀₅,₁₉) ≈ 1.37·SD. The number of replicates needed is R(s) = ⌈(SD_up / 0.02·mean)²⌉, with at least 5.
 Cost per replicate is the optimised projection from `make benchmark`.
 
+
 **Results.**
 
 | n | median SD | median relative SD | median R needed | compute, R = 20 | compute, adaptive |
