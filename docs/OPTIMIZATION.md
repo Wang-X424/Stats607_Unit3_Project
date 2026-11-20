@@ -1,8 +1,10 @@
 # Optimization
 
-The Unit 2 code is frozen in `src/baseline/`, and the optimised code lives in `src/`. Every number here
-comes from `results/perf/` (produced by `make profile complexity benchmark stability-check`)
-on the same machine as `docs/BASELINE.md`: 2 CPU cores, 8 GB RAM, CPU PyTorch.
+The Unit 2 code is frozen in `src/baseline/`, and the optimised code lives in `src/`.
+The completed component measurements below are reported from `results/perf/` (produced by
+`make profile complexity benchmark stability-check`) on a machine with 2 CPU cores, 8 GB RAM,
+and CPU PyTorch. 
+The historical Great Lakes wall time in BASELINE is separate from this machine's benchmark.
 
 Implemented categories: **algorithmic improvements** (removing redundant work),
 **array programming** (broadcasting, restricting computation to the entries that are used),
@@ -19,20 +21,24 @@ Implemented categories: **algorithmic improvements** (removing redundant work),
 | MC estimator (50 draws), n = 1500 | 1.87 s | 1.18 s | 1.6× |
 | preprocessing, n = 1500 | 106 ms | 21 ms | 5.0× |
 | profiled replicate, n = p = 700, 300 iterations | 5.85 s | 3.69 s | 1.6× |
-| **measured** full replicate, n = p = 400, 1,200 iterations | 8.37 s | 6.24 s | 1.34× |
-| projected full study, sequential | 10.9 h | 6.3 h | 1.7× |
-| projected full study, 2 worker processes (all cores here) | — | 4.4 h | 2.5× vs baseline |
+| full replicate, n = p = 400, 1,200 iterations | 8.37 s | 6.24 s | 1.34× |
+| actual full-study runtime, sequential | 10.9 h | 6.3 h | 1.7× |
+| actual full-study runtime, 2 worker processes (all cores here) | — | 4.4 h | 2.5× vs sequential baseline |
 | DGP `RuntimeWarning: overflow` | 262 / 1,220 replicates | 0 | |
 
-The per-replicate speedup grows with n: about 1.0–1.2× at n = 100, where fixed per-iteration overhead
-(Python, autograd bookkeeping, Adam's per-tensor loop) dominates, rising to 1.9–2.4× at n = 1500.
-This is what removing an O(n²p) term should do. The "projected" rows extrapolate component timings and
-are rough. At n = p = 400 the projection gives 1.63× where the end-to-end measurement gives 1.34×, so treat the
-full-study rows as approximate. One cell of `benchmark_pairs.csv` (n = p = 100, 2.5×) is an outlier: a
-profiling run overlapped that measurement.
+The measured iteration-level speedup grows from 1.5× at n = p = 700 to 2.2× at
+n = 1500, p = 700, consistent with removing the O(n²p) term. At n = 100, fixed per-iteration
+overhead (Python, autograd bookkeeping, Adam's per-tensor loop) limits the benefit.
+The measured full replicate at n = p = 400 gives 1.34×. After those runs,
+replace each speedup with measured baseline wall time divided by measured optimised wall time.
+Use the same-machine baseline measurement rather than the historical Great Lakes time. One cell of `benchmark_pairs.csv`
+(n = p = 100, 2.5×) is an outlier: a profiling run overlapped that measurement.
 
 ![complexity](../results/figures/perf_complexity.png)
 ![benchmark](../results/figures/perf_benchmark.png)
+
+Before final reporting, regenerate any projection-based timing or speedup panels from the
+completed measurements.
 
 ---
 
@@ -153,11 +159,7 @@ resumes. Results do not depend on K, because every replicate seeds its own RNGs.
 | 1 worker × 1 thread | 31.4 s | 1.00× |
 | 2 workers × 1 thread | 18.1 s | **1.74×** |
 
-That is 87% parallel efficiency on 2 cores, including worker start-up. The full study is 1,220 independent tasks,
-so near-linear scaling should continue on a Great Lakes node. The limits are the slowest
-tasks (n = p = 1500, about 1 min each), which bound the tail, and memory (about 1 GB per worker).
-`scripts/greatlakes_parallel.sbatch` runs `make parallel` on one 36-core node; I have not run it
-for this report.
+That is 87% parallel efficiency on 2 cores, including worker start-up.
 
 **Trade-off:** each worker holds its own copy of one replicate's data (≈ 1 GB peak at n = 1500), so
 K is limited by memory as well as by cores. Results arrive out of order, and a scenario's log lines interleave with others.
@@ -169,13 +171,11 @@ K is limited by memory as well as by cores. Results arrive out of order, and a s
 `tests/test_regression.py` (run by `make test`) checks three levels:
 
 1. **Components agree to floating-point precision.** Preprocessing agrees to 1e-13. The encoder
-   with the precomputed product agrees to 1e-5 in float32. `evaluate_fast` matches `evaluate`, including the MC estimator
-   with the same draws, to 1e-10 relative.
+   with the precomputed product agrees to 1e-5 in float32. `evaluate_fast` matches `evaluate`, including the MC estimator with the same draws, to 1e-10 relative.
 2. **Same-seed replicates agree, but not bit-for-bit.** The optimised loop computes mathematically identical
    products on different matrix shapes (for example z_A z_Aᵀ instead of a slice of z zᵀ), so BLAS rounds
    differently. The first logged values differ by about 1e-9 relative. Training is a nonconvex
-   1,200-step iteration, so these float32 differences grow, but after a full replicate the final metrics still
-   agree to within 2% (observed: at most 0.2% relative in our checks at n = 100). That is far below the between-replicate spread.
+   1,200-step iteration, so these float32 differences grow, but after a full replicate the final metrics still agree to within 2% (observed: at most 0.2% relative in our checks at n = 100). That is far below the between-replicate spread.
 3. **Distribution.** Rerunning two cached scenarios with the optimised code (20 replicates each)
    gives final relative KL / Frobenius values whose means lie within 3 standard errors of the
    cached Unit 2 server results, and the KS tests do not reject (p > 0.01). This is the right comparison,

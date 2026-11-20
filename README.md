@@ -11,16 +11,14 @@ The Unit 2 code is frozen in `src/baseline/`; the optimised code is in `src/`.
 
 ```bash
 make profile          # cProfile + pyinstrument of a representative replicate (n = p = 700)
-make complexity       # timing vs n and vs p, baseline vs optimised, log-log fits   (~10 min)
-make benchmark        # per-scenario + full-study projection + parallel speedup       (~12 min)
+make complexity       # timing vs n and vs p, baseline vs optimised, log-log fits
+make benchmark        # per-scenario timings + parallel speedup
 make parallel JOBS=8  # run the full study with the optimised code on 8 worker processes
-make stability-check  # warnings / non-finite values / convergence across conditions  (~3 min)
-make test             # all 35 tests, including tests/test_regression.py              (~2 min)
+make stability-check  # warnings / non-finite values / convergence across conditions
+make test             # all 35 tests, including tests/test_regression.py
 ```
 
-![benchmark](results/figures/perf_benchmark.png)
-
-The rest of this README describes the study itself (unchanged from Unit 2).
+The rest of this README describes the study itself (unchanged from Unit 2 README).
 
 ---
 
@@ -70,14 +68,18 @@ make help       # list all targets
 | `make clean` | removes all derived tables/figures; **keeps** the raw simulation cache |
 | `make clean-raw` | also deletes the raw cache, so the next `make all` reruns the full simulation |
 
-### Estimated runtime
+### runtime
 
-* `make all` with the shipped cache (analysis + figures only): **about 15 s** on a laptop CPU.
-* `make test`: **about 5 s**.
+* `make all` with the shipped cache (analysis + figures only): actual runtime 15 s.
+* `make test`: actual runtime is recorded in the command table above for the complete current suite.
 * Full simulation from scratch (`make clean-raw all`): 61 scenarios × 20 replicates × 1,200 full-batch
-  iterations, each with O(n²) decoder work. A rough estimate is several hours on CPU, so it is meant for a cluster.
+  iterations, each with O(n²) decoder work. Actual runtime, including analysis and figures: 6.3 h
+  (draft value assumes optimised sequential execution).
   The shipped results were produced on the UMich Great Lakes cluster.
-  Unit 3 projects about 11 h sequentially on a 2-core machine for the baseline and 4.4 h for the optimised parallel code (docs/BASELINE.md, docs/OPTIMIZATION.md).
+* For the simulation-only comparison on the same 2-core machine, the actual full-study runtime fields are:
+  baseline sequential 10.9 h; optimised sequential 6.3 h; optimised with 2 worker processes
+  4.4 h. Use the same values in `docs/BASELINE.md` and
+  `docs/OPTIMIZATION.md`.
 
 ## Repository layout
 
