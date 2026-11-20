@@ -20,7 +20,7 @@ make test             # all 35 tests, including tests/test_regression.py
 
 The rest of this README describes the study itself (unchanged from Unit 2 README).
 
----
+-----
 
 STATS 607 Unit 2 project (Option B, original simulation).
 

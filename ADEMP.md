@@ -7,7 +7,7 @@ node features. The DGP is a latent-position network model, so the true probabili
 are known and the estimate can be compared with them directly, without going through
 sampled edges (AUC).
 
----
+----
 
 ## Aims
 
